@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>KsBt Formation Calculator</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<main class="app">
+			<form id="calculator-form" class="form-container" aria-labelledby="form-title">
+				<h1 id="form-title">Calculator</h1>
+
+				<!-- Tier inputs: each contains Infantry, Cavalry, Archer inputs -->
+				<fieldset class="groups">
+					<div class="tier" id="tier-t10">
+						<div class="tier-header">T10</div>
+						<div class="tier-row">
+							<div class="subclass">
+								<label for="t10-infantry">Infantry</label>
+								<input type="number" id="t10-infantry" name="t10-infantry" step="1" inputmode="numeric" />
+							</div>
+							<div class="subclass">
+								<label for="t10-cavalry">Cavalry</label>
+								<input type="number" id="t10-cavalry" name="t10-cavalry" step="1" inputmode="numeric" />
+							</div>
+							<div class="subclass">
+								<label for="t10-archer">Archer</label>
+								<input type="number" id="t10-archer" name="t10-archer" step="1" inputmode="numeric" />
+							</div>
+						</div>
+					</div>
+
+					<div class="tier" id="tier-t9">
+						<div class="tier-header">T9</div>
+						<div class="tier-row">
+							<div class="subclass">
+								<label for="t9-infantry">Infantry</label>
+								<input type="number" id="t9-infantry" name="t9-infantry" step="1" inputmode="numeric" />
+							</div>
+							<div class="subclass">
+								<label for="t9-cavalry">Cavalry</label>
+								<input type="number" id="t9-cavalry" name="t9-cavalry" step="1" inputmode="numeric" />
+							</div>
+							<div class="subclass">
+								<label for="t9-archer">Archer</label>
+								<input type="number" id="t9-archer" name="t9-archer" step="1" inputmode="numeric" />
+							</div>
+						</div>
+					</div>
+
+					<div class="tier" id="tier-t8">
+						<div class="tier-header">T8</div>
+						<div class="tier-row">
+							<div class="subclass">
+								<label for="t8-infantry">Infantry</label>
+								<input type="number" id="t8-infantry" name="t8-infantry" step="1" inputmode="numeric" />
+							</div>
+							<div class="subclass">
+								<label for="t8-cavalry">Cavalry</label>
+								<input type="number" id="t8-cavalry" name="t8-cavalry" step="1" inputmode="numeric" />
+							</div>
+							<div class="subclass">
+								<label for="t8-archer">Archer</label>
+								<input type="number" id="t8-archer" name="t8-archer" step="1" inputmode="numeric" />
+							</div>
+						</div>
+					</div>
+				</fieldset>
+
+				<fieldset class="groups" aria-label="Options">
+                    <div class="tier" id="options">
+                        <div class="tier-header">Options</div>
+                    
+                        <div class="subclass">
+                                    <label for="march-cap">March cap</label>
+                                    <input type="number" id="march-cap" name="march-cap" step="1" inputmode="numeric" value="110000" />
+                        </div>
+                        <div class="subclass">
+                                    <label for="join-cap">Join cap</label>
+                                    <input type="number" id="join-cap" name="join-cap" step="1" inputmode="numeric" value="60000" />
+                        </div>
+                        <div class="subclass">
+                                    <label for="max-marches">Max Marches</label>
+                                    <input type="number" id="max-marches" name="max-marches" step="1" inputmode="numeric" value="6" />
+                                    <label class="checkbox">
+										<input type="checkbox" id="host-own-rally" name="host-own-rally" checked />
+                                        <span>Host own rally</span>
+                                    </label>
+                        </div>
+                    </div>
+
+                        
+                    </div>
+				</fieldset>
+
+
+                <h1 id="result-title">Formations</h1>
+
+				<!-- Output formations: Join and Host (readonly fields mirroring inputs) -->
+				<div class="formation-outputs">
+					<div class="formation" id="formation-join">
+						<div class="formation-header">Join Formation</div>
+						<div class="groups">
+							<div class="tier" id="join-tier-t10">
+								<div class="tier-header">T10</div>
+								<div class="tier-row">
+									<div class="subclass">
+										<label>Infantry</label>
+										<input type="number" id="join-t10-infantry" readonly />
+									</div>
+									<div class="subclass">
+										<label>Cavalry</label>
+										<input type="number" id="join-t10-cavalry" readonly />
+									</div>
+									<div class="subclass">
+										<label>Archer</label>
+										<input type="number" id="join-t10-archer" readonly />
+									</div>
+								</div>
+							</div>
+							<div class="tier" id="join-tier-t9">
+								<div class="tier-header">T9</div>
+								<div class="tier-row">
+									<div class="subclass">
+										<label>Infantry</label>
+										<input type="number" id="join-t9-infantry" readonly />
+									</div>
+									<div class="subclass">
+										<label>Cavalry</label>
+										<input type="number" id="join-t9-cavalry" readonly />
+									</div>
+									<div class="subclass">
+										<label>Archer</label>
+										<input type="number" id="join-t9-archer" readonly />
+									</div>
+								</div>
+							</div>
+							<div class="tier" id="join-tier-t8">
+								<div class="tier-header">T8</div>
+								<div class="tier-row">
+									<div class="subclass">
+										<label>Infantry</label>
+										<input type="number" id="join-t8-infantry" readonly />
+									</div>
+									<div class="subclass">
+										<label>Cavalry</label>
+										<input type="number" id="join-t8-cavalry" readonly />
+									</div>
+									<div class="subclass">
+										<label>Archer</label>
+										<input type="number" id="join-t8-archer" readonly />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="formation" id="formation-host">
+						<div class="formation-header">Host Formation</div>
+						<div class="groups">
+							<div class="tier" id="host-tier-t10">
+								<div class="tier-header">T10</div>
+								<div class="tier-row">
+									<div class="subclass">
+										<label>Infantry</label>
+										<input type="number" id="host-t10-infantry" readonly />
+									</div>
+									<div class="subclass">
+										<label>Cavalry</label>
+										<input type="number" id="host-t10-cavalry" readonly />
+									</div>
+									<div class="subclass">
+										<label>Archer</label>
+										<input type="number" id="host-t10-archer" readonly />
+									</div>
+								</div>
+							</div>
+							<div class="tier" id="host-tier-t9">
+								<div class="tier-header">T9</div>
+								<div class="tier-row">
+									<div class="subclass">
+										<label>Infantry</label>
+										<input type="number" id="host-t9-infantry" readonly />
+									</div>
+									<div class="subclass">
+										<label>Cavalry</label>
+										<input type="number" id="host-t9-cavalry" readonly />
+									</div>
+									<div class="subclass">
+										<label>Archer</label>
+										<input type="number" id="host-t9-archer" readonly />
+									</div>
+								</div>
+							</div>
+							<div class="tier" id="host-tier-t8">
+								<div class="tier-header">T8</div>
+								<div class="tier-row">
+									<div class="subclass">
+										<label>Infantry</label>
+										<input type="number" id="host-t8-infantry" readonly />
+									</div>
+									<div class="subclass">
+										<label>Cavalry</label>
+										<input type="number" id="host-t8-cavalry" readonly />
+									</div>
+									<div class="subclass">
+										<label>Archer</label>
+										<input type="number" id="host-t8-archer" readonly />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<output id="results" class="results" aria-live="polite"></output>
+			</form>
+		</main>
+
+		<script src="dist/main.js" defer></script>
+	</body>
+</html>
+
