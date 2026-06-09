@@ -50,6 +50,15 @@ class TroopComposition {
         return this.T8.getTotal() + this.T9.getTotal() + this.T10.getTotal();
     }
 
+    private getTroopTypeTotal(
+        tiers: Record<TierName, Tier>,
+        troopType: TroopType
+    ): number {
+        return tiers["T8"][troopType]
+            + tiers["T9"][troopType]
+            + tiers["T10"][troopType];
+    }
+
     public calculateFormations(
         marchCount: number,
         marchCap: number,
@@ -140,25 +149,36 @@ class TroopComposition {
             return;
         }
         let toRemove = currentCount - cap;
+        const minTroopsPerType = cap >= 100 ? Math.ceil(cap * 0.1) : 0; 
 
         while (toRemove > 0) {
+            let removedSomething = false;
+
             for (const [tierName, troopType] of removeOrder) {
+                if (toRemove <= 0) break;
+
                 const tier = tiers[tierName];
-                if (tier[troopType] > 0) {
-                    if (tier[troopType] > toRemove) {
-                        tier[troopType] -= toRemove;
-                        if (removedTarget) {
-                            removedTarget[tierName][troopType] += toRemove;
-                        }
-                        toRemove = 0;
-                    } else {
-                        toRemove -= tier[troopType];
-                        tier[troopType] = 0;
-                        if (removedTarget) {
-                            removedTarget[tierName][troopType] += tier[troopType];
-                        }
-                    }
+                const currentTroopTypeTotal = this.getTroopTypeTotal(tiers, troopType);
+                const removableFromType = currentTroopTypeTotal - minTroopsPerType;
+
+                const removableFromTier = Math.min(
+                    tier[troopType], 
+                    removableFromType, 
+                    toRemove
+                );
+
+                if (removableFromTier <= 0) continue;
+
+                tier[troopType] -= removableFromTier;
+                if (removedTarget) {
+                    removedTarget[tierName][troopType] += removableFromTier;
                 }
+                toRemove -= removableFromTier;
+                removedSomething = true;
+            }
+            
+            if (!removedSomething) {
+                break;
             }
         }
     }
