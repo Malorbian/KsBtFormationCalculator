@@ -100,6 +100,14 @@ input[type="number"] {
 .tier { background: rgba(255,255,255,0.02); padding:20px; border-radius:8px; }
 .tier-header { font-weight:700; padding-bottom:6px; }
 .tier-row { display:flex; gap:12px; }
+.tier-header { cursor: pointer; position: relative; }
+.tier-header::after { content: "▾"; position: absolute; right: 0; transform: rotate(0deg); transition: transform 160ms ease-in-out; }
+.tier.collapsed .tier-row { display: none; }
+.tier.collapsed .tier-header::after { transform: rotate(-90deg); }
+
+/* Do not make the options panel look interactive */
+#options .tier-header { cursor: default; }
+#options .tier-header::after { display: none; }
 .subclass { flex:1; display:flex; flex-direction:column; }
 .subclass label { margin-bottom:6px; }
 .subclass input[type="number"] { margin:0; }

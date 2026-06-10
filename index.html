@@ -13,7 +13,7 @@
 
 				<!-- Tier inputs: each contains Infantry, Cavalry, Archer inputs -->
 				<fieldset class="groups">
-					<div class="tier-header">Enter All Your Troops</div>
+					<h1 id="result-title">Enter All Your Troops</h1>
 
 					<div class="tier" id="tier-t10">
 						<div class="tier-header">T10</div>
@@ -68,6 +68,60 @@
 							</div>
 						</div>
 					</div>
+
+					<div class="tier" id="tier-t7">
+					<div class="tier-header">T7</div>
+					<div class="tier-row">
+						<div class="subclass">
+							<label for="t7-infantry">Infantry</label>
+							<input type="number" id="t7-infantry" name="t7-infantry" step="1" inputmode="numeric" />
+						</div>
+						<div class="subclass">
+							<label for="t7-cavalry">Cavalry</label>
+							<input type="number" id="t7-cavalry" name="t7-cavalry" step="1" inputmode="numeric" />
+						</div>
+						<div class="subclass">
+							<label for="t7-archer">Archer</label>
+							<input type="number" id="t7-archer" name="t7-archer" step="1" inputmode="numeric" />
+						</div>
+					</div>
+				</div>
+
+				<div class="tier" id="tier-t6">
+					<div class="tier-header">T6</div>
+					<div class="tier-row">
+						<div class="subclass">
+							<label for="t6-infantry">Infantry</label>
+							<input type="number" id="t6-infantry" name="t6-infantry" step="1" inputmode="numeric" />
+						</div>
+						<div class="subclass">
+							<label for="t6-cavalry">Cavalry</label>
+							<input type="number" id="t6-cavalry" name="t6-cavalry" step="1" inputmode="numeric" />
+						</div>
+						<div class="subclass">
+							<label for="t6-archer">Archer</label>
+							<input type="number" id="t6-archer" name="t6-archer" step="1" inputmode="numeric" />
+						</div>
+					</div>
+				</div>
+
+				<div class="tier" id="tier-t5">
+					<div class="tier-header">T5</div>
+					<div class="tier-row">
+						<div class="subclass">
+							<label for="t5-infantry">Infantry</label>
+							<input type="number" id="t5-infantry" name="t5-infantry" step="1" inputmode="numeric" />
+						</div>
+						<div class="subclass">
+							<label for="t5-cavalry">Cavalry</label>
+							<input type="number" id="t5-cavalry" name="t5-cavalry" step="1" inputmode="numeric" />
+						</div>
+						<div class="subclass">
+							<label for="t5-archer">Archer</label>
+							<input type="number" id="t5-archer" name="t5-archer" step="1" inputmode="numeric" />
+						</div>
+					</div>
+				</div>
 				</fieldset>
 
 				<fieldset class="groups" aria-label="Options">
@@ -156,6 +210,60 @@
 								</div>
 							</div>
 						</div>
+
+						<div class="tier" id="join-tier-t7">
+							<div class="tier-header">T7</div>
+							<div class="tier-row">
+								<div class="subclass">
+									<label>Infantry</label>
+									<input type="number" id="join-t7-infantry" readonly />
+								</div>
+								<div class="subclass">
+									<label>Cavalry</label>
+									<input type="number" id="join-t7-cavalry" readonly />
+								</div>
+								<div class="subclass">
+									<label>Archer</label>
+									<input type="number" id="join-t7-archer" readonly />
+								</div>
+							</div>
+						</div>
+
+						<div class="tier" id="join-tier-t6">
+							<div class="tier-header">T6</div>
+							<div class="tier-row">
+								<div class="subclass">
+									<label>Infantry</label>
+									<input type="number" id="join-t6-infantry" readonly />
+								</div>
+								<div class="subclass">
+									<label>Cavalry</label>
+									<input type="number" id="join-t6-cavalry" readonly />
+								</div>
+								<div class="subclass">
+									<label>Archer</label>
+									<input type="number" id="join-t6-archer" readonly />
+								</div>
+							</div>
+						</div>
+
+						<div class="tier" id="join-tier-t5">
+							<div class="tier-header">T5</div>
+							<div class="tier-row">
+								<div class="subclass">
+									<label>Infantry</label>
+									<input type="number" id="join-t5-infantry" readonly />
+								</div>
+								<div class="subclass">
+									<label>Cavalry</label>
+									<input type="number" id="join-t5-cavalry" readonly />
+								</div>
+								<div class="subclass">
+									<label>Archer</label>
+									<input type="number" id="join-t5-archer" readonly />
+								</div>
+							</div>
+						</div>
 					</div>
 
 					<div class="formation" id="formation-host">
@@ -213,8 +321,65 @@
 								</div>
 							</div>
 						</div>
+
+
+						<div class="tier" id="host-tier-t7">
+							<div class="tier-header">T7</div>
+							<div class="tier-row">
+								<div class="subclass">
+									<label>Infantry</label>
+									<input type="number" id="host-t7-infantry" readonly />
+								</div>
+								<div class="subclass">
+									<label>Cavalry</label>
+									<input type="number" id="host-t7-cavalry" readonly />
+								</div>
+								<div class="subclass">
+									<label>Archer</label>
+									<input type="number" id="host-t7-archer" readonly />
+								</div>
+							</div>
+						</div>
+
+						<div class="tier" id="host-tier-t6">
+							<div class="tier-header">T6</div>
+							<div class="tier-row">
+								<div class="subclass">
+									<label>Infantry</label>
+									<input type="number" id="host-t6-infantry" readonly />
+								</div>
+								<div class="subclass">
+									<label>Cavalry</label>
+									<input type="number" id="host-t6-cavalry" readonly />
+								</div>
+								<div class="subclass">
+									<label>Archer</label>
+									<input type="number" id="host-t6-archer" readonly />
+								</div>
+							</div>
+						</div>
+
+						<div class="tier" id="host-tier-t5">
+							<div class="tier-header">T5</div>
+							<div class="tier-row">
+								<div class="subclass">
+									<label>Infantry</label>
+									<input type="number" id="host-t5-infantry" readonly />
+								</div>
+								<div class="subclass">
+									<label>Cavalry</label>
+									<input type="number" id="host-t5-cavalry" readonly />
+								</div>
+								<div class="subclass">
+									<label>Archer</label>
+									<input type="number" id="host-t5-archer" readonly />
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
+
+				
 
 				<output id="results" class="results" aria-live="polite"></output>
 			</form>
