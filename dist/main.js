@@ -85,21 +85,21 @@ class TroopComposition {
     trimToCap(tiers, cap, removedTarget) {
         const removeOrder = [
             ["T5", "infantry"],
-            ["T5", "cavalry"],
             ["T6", "infantry"],
-            ["T6", "cavalry"],
             ["T7", "infantry"],
-            ["T7", "cavalry"],
             ["T8", "infantry"],
-            ["T8", "cavalry"],
+            ["T5", "cavalry"],
             ["T9", "infantry"],
-            ["T9", "cavalry"],
-            ["T10", "infantry"],
-            ["T10", "cavalry"],
+            ["T6", "cavalry"],
             ["T5", "archers"],
+            ["T10", "infantry"],
+            ["T7", "cavalry"],
             ["T6", "archers"],
+            ["T8", "cavalry"],
             ["T7", "archers"],
+            ["T9", "cavalry"],
             ["T8", "archers"],
+            ["T10", "cavalry"],
             ["T9", "archers"],
             ["T10", "archers"]
         ];
