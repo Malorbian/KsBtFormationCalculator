@@ -13,7 +13,7 @@
 
 				<!-- Tier inputs: each contains Infantry, Cavalry, Archer inputs -->
 				<fieldset class="groups">
-					<h1 id="result-title">Enter All Your Troops</h1>
+					<h1 id="result-title">Enter All Your Troops <button class="info-btn" data-type="images" aria-label="Info: mobile images">i</button></h1>
 
 					<div class="tier" id="tier-t10">
 						<div class="tier-header">T10</div>
@@ -124,6 +124,9 @@
 				</div>
 				</fieldset>
 
+				<!-- Formations heading with optional video info -->
+				<h1 id="formations-title">Formations </h1>
+
 				<fieldset class="groups" aria-label="Options">
                     <div class="tier" id="options">
                         <div class="tier-header">Options</div>
@@ -151,7 +154,7 @@
 				</fieldset>
 
 
-                <h1 id="result-title">Formations</h1>
+                <h1 id="result-title">Formations <button class="info-btn" data-type="video" aria-label="Info: short video">i</button> </h1>
 
 				<!-- Output formations: Join and Host (readonly fields mirroring inputs) -->
 				<div class="formation-outputs">
@@ -385,7 +388,30 @@
 			</form>
 		</main>
 
-		<script src="dist/main.js" defer></script>
+			<!-- Info modal (images + video) -->
+			<div id="info-modal" class="info-modal" aria-hidden="true">
+				<div class="info-overlay" data-action="close"></div>
+				<div class="info-content" role="dialog" aria-modal="true">
+					<button class="info-close" data-action="close" aria-label="Close">×</button>
+					<div class="info-body">
+						<div class="info-images" style="display:none;">
+							<img id="info-image" class="mobile-img" src="" alt="Mobile view" />
+							<div class="img-controls">
+								<button class="img-prev" aria-label="Previous image">‹</button>
+								<button class="img-next" aria-label="Next image">›</button>
+							</div>
+						</div>
+						<div class="info-video" style="display:none;">
+							<video id="info-video" class="video-player" controls preload="metadata">
+								<source id="info-video-src" src="" type="video/mp4">
+								Your browser does not support the video tag.
+							</video>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<script src="dist/main.js" defer></script>
 	</body>
 </html>
 
