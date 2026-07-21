@@ -71,6 +71,43 @@ body::before {
 
 .form-container h1 { margin: 0 0 12px 0; font-size: 1.25rem; }
 .form-container label { display: block; margin: 10px 0 6px; font-size: 0.95rem; }
+
+.language-switcher {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 10px;
+	margin: -4px 0 18px;
+}
+
+.language-switcher label {
+	margin: 0;
+	font-size: 0.95rem;
+}
+
+.language-switcher select {
+	padding: 8px 12px;
+	border-radius: 8px;
+	border: 1px solid rgba(255,255,255,0.08);
+	background: rgba(255,255,255,0.04);
+	color: var(--text-color);
+	font: inherit;
+}
+
+.language-switcher option {
+	background: #071428;
+	color: var(--text-color);
+}
+
+html[dir="rtl"] .language-switcher {
+	justify-content: flex-start;
+}
+
+html[dir="rtl"] .tier-header::after {
+	right: auto;
+	left: 0;
+}
+
 .form-container input[type="number"] {
 	width: 100%;
 	padding: 10px 12px;

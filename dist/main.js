@@ -44,7 +44,7 @@ class TroopComposition {
     calculateFormations(marchCount, marchCap, joinCap, hostOwn) {
         const divisor = marchCount + (hostOwn ? 1 : 0);
         if (divisor <= 0) {
-            throw new Error("March count must be greater than 0.");
+            throw new Error("errors.marchCountGreaterThanZero");
         }
         const joinTiers = {
             T5: new Tier("T5", Math.ceil(this.T5.infantry / divisor), Math.ceil(this.T5.cavalry / divisor), Math.ceil(this.T5.archers / divisor)),
@@ -139,6 +139,144 @@ class TroopComposition {
         return new TroopComposition(name, tiers.T5, tiers.T6, tiers.T7, tiers.T8, tiers.T9, tiers.T10);
     }
 }
+const DEFAULT_LANGUAGE = "en";
+const LANGUAGE_STORAGE_KEY = "ksbt-language";
+const fallbackLanguages = [
+    { code: "en", name: "English", nativeName: "English", dir: "ltr" }
+];
+const defaultTranslations = {
+    "app.title": "KsBt Formation Calculator",
+    "app.heading": "Formation Calculator",
+    "language.label": "Language",
+    "sections.enterTroops": "Enter All Your Troops",
+    "sections.formations": "Formations",
+    "sections.options": "Options",
+    "troops.infantry": "Infantry",
+    "troops.cavalry": "Cavalry",
+    "troops.archer": "Archer",
+    "options.marchCap": "March cap",
+    "options.joinCap": "Join cap",
+    "options.maxMarches": "Max Marches",
+    "options.hostOwnRally": "Host own rally",
+    "formations.join": "Join Formation",
+    "formations.host": "Host Formation",
+    "status.formationsCalculated": "Formations calculated.",
+    "errors.marchCountGreaterThanZero": "March count must be greater than 0.",
+    "errors.calculation": "Calculation error",
+    "aria.infoImages": "Info: mobile images",
+    "aria.infoVideo": "Info: short video",
+    "aria.closeInfo": "Close info window",
+    "aria.previousImage": "Previous image",
+    "aria.nextImage": "Next image",
+    "modal.videoNotSupported": "Your browser does not support the video tag."
+};
+let currentTranslations = { ...defaultTranslations };
+let currentLanguage = DEFAULT_LANGUAGE;
+let currentDirection = "ltr";
+function t(key, fallback) {
+    return currentTranslations[key]
+        ?? defaultTranslations[key]
+        ?? fallback
+        ?? key;
+}
+async function fetchJson(url) {
+    const response = await fetch(url, { cache: "no-cache" });
+    if (!response.ok) {
+        throw new Error(`Could not load ${url}`);
+    }
+    return await response.json();
+}
+function normalizeLanguageMeta(meta) {
+    return {
+        code: meta.code,
+        name: meta.name,
+        nativeName: meta.nativeName || meta.name || meta.code,
+        dir: meta.dir === "rtl" ? "rtl" : "ltr"
+    };
+}
+async function loadAvailableLanguages() {
+    try {
+        const languages = await fetchJson("i18n/languages.json");
+        return languages
+            .filter((language) => language.code && (language.nativeName || language.name))
+            .map(normalizeLanguageMeta);
+    }
+    catch {
+        return fallbackLanguages;
+    }
+}
+async function loadTranslations(languageCode) {
+    if (languageCode === DEFAULT_LANGUAGE) {
+        return { ...defaultTranslations };
+    }
+    try {
+        const loadedTranslations = await fetchJson(`i18n/${languageCode}.json`);
+        return { ...defaultTranslations, ...loadedTranslations };
+    }
+    catch {
+        return { ...defaultTranslations };
+    }
+}
+function getPreferredLanguage(availableLanguages) {
+    const savedLanguage = localStorage.getItem(LANGUAGE_STORAGE_KEY);
+    if (savedLanguage && availableLanguages.some((language) => language.code === savedLanguage)) {
+        return savedLanguage;
+    }
+    const browserLanguage = navigator.language.split("-")[0];
+    if (availableLanguages.some((language) => language.code === browserLanguage)) {
+        return browserLanguage;
+    }
+    return DEFAULT_LANGUAGE;
+}
+function translatePage() {
+    document.documentElement.lang = currentLanguage;
+    document.documentElement.dir = currentDirection;
+    document.title = t("app.title", "KsBt Formation Calculator");
+    document.querySelectorAll("[data-i18n]").forEach((element) => {
+        const key = element.dataset.i18n;
+        if (!key)
+            return;
+        element.textContent = t(key, element.textContent ?? undefined);
+    });
+    document.querySelectorAll("[data-i18n-aria-label]").forEach((element) => {
+        const key = element.getAttribute("data-i18n-aria-label");
+        if (!key)
+            return;
+        element.setAttribute("aria-label", t(key, element.getAttribute("aria-label") ?? undefined));
+    });
+}
+function populateLanguageSelect(select, availableLanguages) {
+    select.replaceChildren();
+    for (const language of availableLanguages) {
+        const option = document.createElement("option");
+        option.value = language.code;
+        option.textContent = language.nativeName;
+        select.appendChild(option);
+    }
+}
+async function setLanguage(languageCode, availableLanguages) {
+    const selectedLanguage = availableLanguages.find((language) => language.code === languageCode)
+        ?? availableLanguages.find((language) => language.code === DEFAULT_LANGUAGE)
+        ?? fallbackLanguages[0];
+    currentLanguage = selectedLanguage.code;
+    currentDirection = selectedLanguage.dir ?? "ltr";
+    currentTranslations = await loadTranslations(selectedLanguage.code);
+    localStorage.setItem(LANGUAGE_STORAGE_KEY, selectedLanguage.code);
+    translatePage();
+}
+async function initializeI18n() {
+    const availableLanguages = await loadAvailableLanguages();
+    const select = document.getElementById("language-select");
+    const selectedLanguage = getPreferredLanguage(availableLanguages);
+    if (select) {
+        populateLanguageSelect(select, availableLanguages);
+        select.value = selectedLanguage;
+        select.addEventListener("change", () => {
+            void setLanguage(select.value, availableLanguages).then(calculateAndFillOutputs);
+        });
+    }
+    await setLanguage(selectedLanguage, availableLanguages);
+}
 // --- UI binding ---------------------------------------------------------
 function readInt(id, fallback = 0) {
     const el = document.getElementById(id);
@@ -223,17 +361,20 @@ function calculateAndFillOutputs() {
         setOutput('host-t5-cavalry', res.hostFormation.T5.cavalry);
         setOutput('host-t5-archer', res.hostFormation.T5.archers);
         if (resultsEl)
-            resultsEl.textContent = 'Formations calculated.';
+            resultsEl.textContent = t("status.formationsCalculated");
     }
     catch (err) {
-        if (resultsEl)
-            resultsEl.textContent = String(err.message || 'Calculation error');
+        if (resultsEl) {
+            const message = err.message || "errors.calculation";
+            resultsEl.textContent = t(message, message);
+        }
     }
 }
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('calculator-form');
     if (!form)
         return;
+    void initializeI18n().then(calculateAndFillOutputs);
     // prevent form submit from clearing inputs / reloading page
     form.addEventListener('submit', (ev) => {
         ev.preventDefault();
@@ -293,12 +434,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const imgEl = document.getElementById('info-image');
     const videoEl = document.getElementById('info-video');
     const imageSet = [
-        'res\\TotalTroops.png',
-        'res\\squad.png',
-        'res\\TotalTroopsCalc.png',
-        'res\\FormationsCalc.png'
+        'res/TotalTroops.png',
+        'res/squad.png',
+        'res/TotalTroopsCalc.png',
+        'res/FormationsCalc.png'
     ];
-    const videoSrc = 'res\\FormationsVid.mp4';
+    const videoSrc = 'res/FormationsVid.mp4';
     let currentImageIndex = 0;
     function openImageModal(startIndex = 0) {
         if (!modal || !imgEl)
