@@ -22,5 +22,14 @@
   "aria.closeInfo": "Infofenster schließen",
   "aria.previousImage": "Vorheriges Bild",
   "aria.nextImage": "Nächstes Bild",
-  "modal.videoNotSupported": "Dein Browser unterstützt das Video-Tag nicht."
+  "modal.videoNotSupported": "Dein Browser unterstützt das Video-Tag nicht.",
+  "options.targetRatio": "Zielverhältnis (%)",
+  "options.resetRatio": "Auf 1:20:79 zurücksetzen",
+  "options.ratioHint": "Du kannst das Verhältnis manuell ändern. Die drei Werte werden automatisch normalisiert; manuelle Änderungen deaktivieren die statbasierte Berechnung.",
+  "options.tgLevels": "Globale TG-Level",
+  "options.stats": "Bonuswerte (%)",
+  "options.statsHint": "Gib alle Angriffs- und Tödlichkeitsboni ein und aktiviere anschließend die Checkbox darunter, um das Verhältnis aus deinen Werten zu berechnen.",
+  "options.useStatsRatio": "Meine Werte zur Berechnung des Verhältnisses verwenden",
+  "options.attack": "Angriff",
+  "options.lethality": "Tödlichkeit"
 }

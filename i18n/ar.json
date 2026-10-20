@@ -22,5 +22,14 @@
   "aria.closeInfo": "إغلاق نافذة المعلومات",
   "aria.previousImage": "الصورة السابقة",
   "aria.nextImage": "الصورة التالية",
-  "modal.videoNotSupported": "متصفحك لا يدعم وسم الفيديو."
+  "modal.videoNotSupported": "متصفحك لا يدعم وسم الفيديو.",
+  "options.targetRatio": "النسبة المستهدفة (%)",
+  "options.resetRatio": "إعادة الضبط إلى 1:20:79",
+  "options.ratioHint": "يمكنك تعديل النسبة يدويًا. تتم موازنة القيم الثلاث تلقائيًا، ويؤدي التعديل اليدوي إلى إيقاف الحساب المعتمد على الإحصاءات.",
+  "options.tgLevels": "مستويات TG العامة",
+  "options.stats": "إحصاءات المكافآت (%)",
+  "options.statsHint": "أدخل جميع مكافآت الهجوم والفتك، ثم فعّل مربع الاختيار أدناه لحساب النسبة اعتمادًا على إحصاءاتك.",
+  "options.useStatsRatio": "استخدام إحصاءاتي لحساب النسبة",
+  "options.attack": "الهجوم",
+  "options.lethality": "الفتك"
 }

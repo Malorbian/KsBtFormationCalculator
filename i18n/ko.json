@@ -22,5 +22,14 @@
   "aria.closeInfo": "정보 창 닫기",
   "aria.previousImage": "이전 이미지",
   "aria.nextImage": "다음 이미지",
-  "modal.videoNotSupported": "브라우저가 video 태그를 지원하지 않습니다."
+  "modal.videoNotSupported": "브라우저가 video 태그를 지원하지 않습니다.",
+  "options.targetRatio": "목표 비율 (%)",
+  "options.resetRatio": "1:20:79로 초기화",
+  "options.ratioHint": "비율을 직접 수정할 수 있습니다. 세 값은 자동으로 정규화되며, 직접 수정하면 능력치 기반 계산이 꺼집니다.",
+  "options.tgLevels": "전체 TG 레벨",
+  "options.stats": "보너스 능력치 (%)",
+  "options.statsHint": "공격력과 치명타 관련 보너스 값을 모두 입력한 뒤 아래 체크박스를 켜면 능력치로 비율을 계산합니다.",
+  "options.useStatsRatio": "내 능력치로 비율 계산",
+  "options.attack": "공격력",
+  "options.lethality": "치명도"
 }

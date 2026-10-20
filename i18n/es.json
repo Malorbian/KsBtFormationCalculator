@@ -22,5 +22,14 @@
   "aria.closeInfo": "Cerrar ventana de información",
   "aria.previousImage": "Imagen anterior",
   "aria.nextImage": "Imagen siguiente",
-  "modal.videoNotSupported": "Tu navegador no admite la etiqueta de video."
+  "modal.videoNotSupported": "Tu navegador no admite la etiqueta de video.",
+  "options.targetRatio": "Proporción objetivo (%)",
+  "options.resetRatio": "Restablecer a 1:20:79",
+  "options.ratioHint": "Puedes editar la proporción manualmente. Los tres valores se normalizan automáticamente; los cambios manuales desactivan el cálculo basado en estadísticas.",
+  "options.tgLevels": "Niveles TG globales",
+  "options.stats": "Estadísticas de bonificación (%)",
+  "options.statsHint": "Introduce todos los bonos de Ataque y Letalidad y activa la casilla inferior para calcular la proporción con tus estadísticas.",
+  "options.useStatsRatio": "Usar mis estadísticas para calcular la proporción",
+  "options.attack": "Ataque",
+  "options.lethality": "Letalidad"
 }

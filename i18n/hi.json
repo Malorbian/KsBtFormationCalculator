@@ -22,5 +22,14 @@
   "aria.closeInfo": "जानकारी विंडो बंद करें",
   "aria.previousImage": "पिछला चित्र",
   "aria.nextImage": "अगला चित्र",
-  "modal.videoNotSupported": "आपका ब्राउज़र वीडियो टैग का समर्थन नहीं करता।"
+  "modal.videoNotSupported": "आपका ब्राउज़र वीडियो टैग का समर्थन नहीं करता।",
+  "options.targetRatio": "लक्ष्य अनुपात (%)",
+  "options.resetRatio": "1:20:79 पर रीसेट करें",
+  "options.ratioHint": "आप अनुपात को मैन्युअली बदल सकते हैं। तीनों मान अपने-आप सामान्यीकृत होते हैं; मैन्युअल बदलाव स्टैट-आधारित गणना बंद कर देते हैं।",
+  "options.tgLevels": "ग्लोबल TG स्तर",
+  "options.stats": "बोनस स्टैट्स (%)",
+  "options.statsHint": "सभी Attack और Lethality बोनस दर्ज करें, फिर अपने स्टैट्स से अनुपात निकालने के लिए नीचे दिया चेकबॉक्स चुनें।",
+  "options.useStatsRatio": "अनुपात निकालने के लिए मेरे स्टैट्स इस्तेमाल करें",
+  "options.attack": "Attack",
+  "options.lethality": "Lethality"
 }

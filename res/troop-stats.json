@@ -1,0 +1,256 @@
+{
+  "type": {
+    "infantry": {
+    "tier": {
+        "T1": {
+          "TG0": {"attack": 1, "defense": 4, "health": 6, "lethality": 1},
+          "TG1": {"attack": 1, "defense": 4, "health": 6, "lethality": 1},
+          "TG2": {"attack": 1, "defense": 5, "health": 6, "lethality": 1},
+          "TG3": {"attack": 1, "defense": 5, "health": 6, "lethality": 1},
+          "TG4": {"attack": 1, "defense": 5, "health": 6, "lethality": 1},
+          "TG5": {"attack": 1, "defense": 6, "health": 6, "lethality": 1}
+        },
+        "T2": {
+          "TG0": {"attack": 2, "defense": 5, "health": 7, "lethality": 2},
+          "TG1": {"attack": 2, "defense": 5, "health": 7, "lethality": 2},
+          "TG2": {"attack": 2, "defense": 6, "health": 7, "lethality": 2},
+          "TG3": {"attack": 2, "defense": 6, "health": 7, "lethality": 2},
+          "TG4": {"attack": 2, "defense": 6, "health": 7, "lethality": 2},
+          "TG5": {"attack": 2, "defense": 7, "health": 7, "lethality": 2}
+        },
+        "T3": {
+          "TG0": {"attack": 3, "defense": 6, "health": 8, "lethality": 3},
+          "TG1": {"attack": 3, "defense": 6, "health": 9, "lethality": 3},
+          "TG2": {"attack": 3, "defense": 7, "health": 10, "lethality": 3},
+          "TG3": {"attack": 3, "defense": 7, "health": 11, "lethality": 3},
+          "TG4": {"attack": 3, "defense": 7, "health": 12, "lethality": 3},
+          "TG5": {"attack": 3, "defense": 8, "health": 13, "lethality": 3}
+        },
+        "T4": {
+          "TG0": {"attack": 4, "defense": 7, "health": 9, "lethality": 4},
+          "TG1": {"attack": 4, "defense": 8, "health": 10, "lethality": 4},
+          "TG2": {"attack": 4, "defense": 9, "health": 11, "lethality": 4},
+          "TG3": {"attack": 4, "defense": 10, "health": 12, "lethality": 4},
+          "TG4": {"attack": 4, "defense": 11, "health": 13, "lethality": 4},
+          "TG5": {"attack": 4, "defense": 12, "health": 14, "lethality": 4}
+        },
+        "T5": {
+          "TG0": {"attack": 5, "defense": 8, "health": 10, "lethality": 5},
+          "TG1": {"attack": 6, "defense": 9, "health": 11, "lethality": 5},
+          "TG2": {"attack": 7, "defense": 10, "health": 12, "lethality": 6},
+          "TG3": {"attack": 8, "defense": 11, "health": 13, "lethality": 7},
+          "TG4": {"attack": 8, "defense": 12, "health": 14, "lethality": 8},
+          "TG5": {"attack": 9, "defense": 13, "health": 15, "lethality": 8}
+        },
+        "T6": {
+          "TG0": {"attack": 6, "defense": 9, "health": 11, "lethality": 6},
+          "TG1": {"attack": 7, "defense": 10, "health": 12, "lethality": 6},
+          "TG2": {"attack": 8, "defense": 11, "health": 13, "lethality": 7},
+          "TG3": {"attack": 9, "defense": 12, "health": 14, "lethality": 8},
+          "TG4": {"attack": 9, "defense": 13, "health": 15, "lethality": 9},
+          "TG5": {"attack": 10, "defense": 14, "health": 16, "lethality": 9}
+        },
+        "T7": {
+          "TG0": {"attack": 7, "defense": 10, "health": 12, "lethality": 7},
+          "TG1": {"attack": 8, "defense": 11, "health": 13, "lethality": 7},
+          "TG2": {"attack": 9, "defense": 13, "health": 14, "lethality": 8},
+          "TG3": {"attack": 10, "defense": 14, "health": 15, "lethality": 9},
+          "TG4": {"attack": 10, "defense": 15, "health": 16, "lethality": 10},
+          "TG5": {"attack": 11, "defense": 17, "health": 17, "lethality": 10}
+        },
+        "T8": {
+          "TG0": {"attack": 8, "defense": 11, "health": 13, "lethality": 8},
+          "TG1": {"attack": 9, "defense": 12, "health": 14, "lethality": 8},
+          "TG2": {"attack": 10, "defense": 14, "health": 15, "lethality": 9},
+          "TG3": {"attack": 11, "defense": 15, "health": 16, "lethality": 10},
+          "TG4": {"attack": 11, "defense": 16, "health": 17, "lethality": 11},
+          "TG5": {"attack": 12, "defense": 18, "health": 18, "lethality": 11}
+        },
+        "T9": {
+          "TG0": {"attack": 9, "defense": 12, "health": 14, "lethality": 9},
+          "TG1": {"attack": 10, "defense": 13, "health": 15, "lethality": 9},
+          "TG2": {"attack": 11, "defense": 15, "health": 16, "lethality": 10},
+          "TG3": {"attack": 12, "defense": 16, "health": 17, "lethality": 11},
+          "TG4": {"attack": 12, "defense": 17, "health": 18, "lethality": 12},
+          "TG5": {"attack": 13, "defense": 19, "health": 19, "lethality": 12}
+        },
+        "T10": {
+          "TG0": {"attack": 10, "defense": 13, "health": 15, "lethality": 10},
+          "TG1": {"attack": 11, "defense": 14, "health": 16, "lethality": 10},
+          "TG2": {"attack": 12, "defense": 16, "health": 17, "lethality": 11},
+          "TG3": {"attack": 13, "defense": 17, "health": 18, "lethality": 12},
+          "TG4": {"attack": 13, "defense": 18, "health": 19, "lethality": 13},
+          "TG5": {"attack": 14, "defense": 20, "health": 20, "lethality": 13}
+        }
+      }
+    },
+    "cavalry": {
+      "tier": {
+        "T1": {
+          "TG0": {"attack": 4, "defense": 2, "health": 2, "lethality": 5},
+          "TG1": {"attack": 4, "defense": 2, "health": 2, "lethality": 5},
+          "TG2": {"attack": 5, "defense": 2, "health": 2, "lethality": 5},
+          "TG3": {"attack": 5, "defense": 2, "health": 2, "lethality": 5},
+          "TG4": {"attack": 5, "defense": 2, "health": 2, "lethality": 5},
+          "TG5": {"attack": 6, "defense": 2, "health": 2, "lethality": 5}
+        },
+        "T2": {
+          "TG0": {"attack": 5, "defense": 3, "health": 3, "lethality": 6},
+          "TG1": {"attack": 5, "defense": 3, "health": 3, "lethality": 6},
+          "TG2": {"attack": 6, "defense": 3, "health": 3, "lethality": 6},
+          "TG3": {"attack": 6, "defense": 3, "health": 3, "lethality": 6},
+          "TG4": {"attack": 6, "defense": 3, "health": 3, "lethality": 6},
+          "TG5": {"attack": 7, "defense": 3, "health": 3, "lethality": 6}
+        },
+        "T3": {
+          "TG0": {"attack": 6, "defense": 4, "health": 4, "lethality": 7},
+          "TG1": {"attack": 6, "defense": 4, "health": 4, "lethality": 8},
+          "TG2": {"attack": 7, "defense": 4, "health": 4, "lethality": 9},
+          "TG3": {"attack": 7, "defense": 4, "health": 4, "lethality": 10},
+          "TG4": {"attack": 7, "defense": 4, "health": 4, "lethality": 11},
+          "TG5": {"attack": 8, "defense": 4, "health": 4, "lethality": 12}
+        },
+        "T4": {
+          "TG0": {"attack": 7, "defense": 5, "health": 5, "lethality": 8},
+          "TG1": {"attack": 8, "defense": 5, "health": 5, "lethality": 9},
+          "TG2": {"attack": 9, "defense": 5, "health": 5, "lethality": 10},
+          "TG3": {"attack": 10, "defense": 5, "health": 5, "lethality": 11},
+          "TG4": {"attack": 11, "defense": 5, "health": 5, "lethality": 12},
+          "TG5": {"attack": 12, "defense": 5, "health": 5, "lethality": 13}
+        },
+        "T5": {
+          "TG0": {"attack": 8, "defense": 6, "health": 6, "lethality": 9},
+          "TG1": {"attack": 9, "defense": 7, "health": 6, "lethality": 10},
+          "TG2": {"attack": 10, "defense": 8, "health": 7, "lethality": 11},
+          "TG3": {"attack": 11, "defense": 9, "health": 8, "lethality": 12},
+          "TG4": {"attack": 12, "defense": 9, "health": 8, "lethality": 13},
+          "TG5": {"attack": 13, "defense": 10, "health": 9, "lethality": 14}
+        },
+        "T6": {
+          "TG0": {"attack": 9, "defense": 7, "health": 7, "lethality": 10},
+          "TG1": {"attack": 10, "defense": 8, "health": 7, "lethality": 11},
+          "TG2": {"attack": 11, "defense": 9, "health": 8, "lethality": 12},
+          "TG3": {"attack": 12, "defense": 10, "health": 9, "lethality": 13},
+          "TG4": {"attack": 13, "defense": 10, "health": 9, "lethality": 14},
+          "TG5": {"attack": 14, "defense": 11, "health": 10, "lethality": 15}
+        },
+        "T7": {
+          "TG0": {"attack": 10, "defense": 8, "health": 8, "lethality": 11},
+          "TG1": {"attack": 11, "defense": 9, "health": 8, "lethality": 12},
+          "TG2": {"attack": 13, "defense": 10, "health": 9, "lethality": 13},
+          "TG3": {"attack": 14, "defense": 11, "health": 10, "lethality": 14},
+          "TG4": {"attack": 15, "defense": 11, "health": 10, "lethality": 15},
+          "TG5": {"attack": 17, "defense": 12, "health": 11, "lethality": 16}
+        },
+        "T8": {
+          "TG0": {"attack": 11, "defense": 9, "health": 9, "lethality": 12},
+          "TG1": {"attack": 12, "defense": 10, "health": 9, "lethality": 13},
+          "TG2": {"attack": 14, "defense": 11, "health": 10, "lethality": 14},
+          "TG3": {"attack": 15, "defense": 12, "health": 11, "lethality": 15},
+          "TG4": {"attack": 16, "defense": 12, "health": 11, "lethality": 16},
+          "TG5": {"attack": 18, "defense": 13, "health": 12, "lethality": 17}
+        },
+        "T9": {
+          "TG0": {"attack": 12, "defense": 10, "health": 10, "lethality": 13},
+          "TG1": {"attack": 13, "defense": 11, "health": 10, "lethality": 14},
+          "TG2": {"attack": 15, "defense": 12, "health": 11, "lethality": 15},
+          "TG3": {"attack": 16, "defense": 13, "health": 12, "lethality": 16},
+          "TG4": {"attack": 17, "defense": 13, "health": 12, "lethality": 17},
+          "TG5": {"attack": 19, "defense": 14, "health": 13, "lethality": 18}
+        },
+        "T10": {
+          "TG0": {"attack": 13, "defense": 11, "health": 11, "lethality": 14},
+          "TG1": {"attack": 14, "defense": 12, "health": 11, "lethality": 15},
+          "TG2": {"attack": 16, "defense": 13, "health": 12, "lethality": 16},
+          "TG3": {"attack": 17, "defense": 14, "health": 13, "lethality": 17},
+          "TG4": {"attack": 18, "defense": 14, "health": 13, "lethality": 18},
+          "TG5": {"attack": 20, "defense": 15, "health": 14, "lethality": 19}
+        }
+      }
+    },
+    "archer": {
+      "tier": {
+        "T1": {
+          "TG0": {"attack": 5, "defense": 1, "health": 1, "lethality": 5},
+          "TG1": {"attack": 5, "defense": 1, "health": 1, "lethality": 6},
+          "TG2": {"attack": 6, "defense": 1, "health": 1, "lethality": 6},
+          "TG3": {"attack": 6, "defense": 1, "health": 1, "lethality": 6},
+          "TG4": {"attack": 6, "defense": 1, "health": 1, "lethality": 6},
+          "TG5": {"attack": 7, "defense": 1, "health": 1, "lethality": 6}
+        },
+        "T2": {
+          "TG0": {"attack": 6, "defense": 2, "health": 2, "lethality": 7},
+          "TG1": {"attack": 6, "defense": 2, "health": 2, "lethality": 7},
+          "TG2": {"attack": 7, "defense": 2, "health": 2, "lethality": 8},
+          "TG3": {"attack": 7, "defense": 2, "health": 2, "lethality": 7},
+          "TG4": {"attack": 7, "defense": 2, "health": 2, "lethality": 7},
+          "TG5": {"attack": 8, "defense": 2, "health": 2, "lethality": 7}
+        },
+        "T3": {
+          "TG0": {"attack": 7, "defense": 3, "health": 3, "lethality": 8},
+          "TG1": {"attack": 8, "defense": 3, "health": 3, "lethality": 9},
+          "TG2": {"attack": 9, "defense": 3, "health": 3, "lethality": 10},
+          "TG3": {"attack": 10, "defense": 3, "health": 3, "lethality": 11},
+          "TG4": {"attack": 11, "defense": 3, "health": 3, "lethality": 12},
+          "TG5": {"attack": 12, "defense": 3, "health": 3, "lethality": 13}
+        },
+        "T4": {
+          "TG0": {"attack": 8, "defense": 4, "health": 4, "lethality": 9},
+          "TG1": {"attack": 9, "defense": 4, "health": 4, "lethality": 10},
+          "TG2": {"attack": 10, "defense": 4, "health": 4, "lethality": 11},
+          "TG3": {"attack": 11, "defense": 4, "health": 4, "lethality": 12},
+          "TG4": {"attack": 12, "defense": 4, "health": 4, "lethality": 13},
+          "TG5": {"attack": 13, "defense": 4, "health": 4, "lethality": 14}
+        },
+        "T5": {
+          "TG0": {"attack": 9, "defense": 5, "health": 5, "lethality": 10},
+          "TG1": {"attack": 10, "defense": 6, "health": 6, "lethality": 11},
+          "TG2": {"attack": 11, "defense": 7, "health": 7, "lethality": 12},
+          "TG3": {"attack": 12, "defense": 8, "health": 8, "lethality": 13},
+          "TG4": {"attack": 13, "defense": 9, "health": 9, "lethality": 14},
+          "TG5": {"attack": 14, "defense": 9, "health": 9, "lethality": 15}
+        },
+        "T6": {
+          "TG0": {"attack": 10, "defense": 6, "health": 6, "lethality": 11},
+          "TG1": {"attack": 11, "defense": 7, "health": 7, "lethality": 12},
+          "TG2": {"attack": 12, "defense": 8, "health": 8, "lethality": 13},
+          "TG3": {"attack": 13, "defense": 9, "health": 9, "lethality": 14},
+          "TG4": {"attack": 14, "defense": 10, "health": 9, "lethality": 15},
+          "TG5": {"attack": 15, "defense": 10, "health": 10, "lethality": 16}
+        },
+        "T7": {
+          "TG0": {"attack": 11, "defense": 7, "health": 7, "lethality": 12},
+          "TG1": {"attack": 12, "defense": 8, "health": 8, "lethality": 13},
+          "TG2": {"attack": 14, "defense": 9, "health": 9, "lethality": 14},
+          "TG3": {"attack": 15, "defense": 10, "health": 10, "lethality": 15},
+          "TG4": {"attack": 16, "defense": 11, "health": 10, "lethality": 16},
+          "TG5": {"attack": 18, "defense": 11, "health": 11, "lethality": 17}
+        },
+        "T8": {
+          "TG0": {"attack": 12, "defense": 8, "health": 8, "lethality": 13},
+          "TG1": {"attack": 13, "defense": 9, "health": 9, "lethality": 14},
+          "TG2": {"attack": 15, "defense": 10, "health": 10, "lethality": 15},
+          "TG3": {"attack": 16, "defense": 11, "health": 11, "lethality": 16},
+          "TG4": {"attack": 17, "defense": 12, "health": 11, "lethality": 17},
+          "TG5": {"attack": 19, "defense": 12, "health": 12, "lethality": 18}
+        },
+        "T9": {
+          "TG0": {"attack": 13, "defense": 9, "health": 9, "lethality": 14},
+          "TG1": {"attack": 14, "defense": 10, "health": 10, "lethality": 15},
+          "TG2": {"attack": 16, "defense": 11, "health": 11, "lethality": 16},
+          "TG3": {"attack": 17, "defense": 12, "health": 12, "lethality": 17},
+          "TG4": {"attack": 18, "defense": 13, "health": 12, "lethality": 18},
+          "TG5": {"attack": 20, "defense": 13, "health": 13, "lethality": 19}
+        },
+        "T10": {
+          "TG0": {"attack": 14, "defense": 10, "health": 10, "lethality": 15},
+          "TG1": {"attack": 15, "defense": 11, "health": 11, "lethality": 16},
+          "TG2": {"attack": 17, "defense": 12, "health": 12, "lethality": 17},
+          "TG3": {"attack": 18, "defense": 13, "health": 13, "lethality": 18},
+          "TG4": {"attack": 19, "defense": 14, "health": 13, "lethality": 19},
+          "TG5": {"attack": 21, "defense": 14, "health": 14, "lethality": 20}
+        }
+      }
+    }
+  }
+}

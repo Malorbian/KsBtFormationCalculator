@@ -22,5 +22,14 @@
   "aria.closeInfo": "Tutup jendela info",
   "aria.previousImage": "Gambar sebelumnya",
   "aria.nextImage": "Gambar berikutnya",
-  "modal.videoNotSupported": "Browser kamu tidak mendukung tag video."
+  "modal.videoNotSupported": "Browser kamu tidak mendukung tag video.",
+  "options.targetRatio": "Rasio target (%)",
+  "options.resetRatio": "Reset ke 1:20:79",
+  "options.ratioHint": "Kamu dapat mengubah rasio secara manual. Ketiga nilai akan dinormalisasi otomatis; perubahan manual akan mematikan perhitungan berbasis statistik.",
+  "options.tgLevels": "Level TG global",
+  "options.stats": "Stat bonus (%)",
+  "options.statsHint": "Masukkan semua bonus Attack dan Lethality, lalu centang kotak di bawah untuk menghitung rasio dari stat kamu.",
+  "options.useStatsRatio": "Gunakan stat saya untuk menghitung rasio",
+  "options.attack": "Attack",
+  "options.lethality": "Lethality"
 }

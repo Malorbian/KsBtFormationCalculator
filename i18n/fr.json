@@ -22,5 +22,14 @@
   "aria.closeInfo": "Fermer la fenêtre d'information",
   "aria.previousImage": "Image précédente",
   "aria.nextImage": "Image suivante",
-  "modal.videoNotSupported": "Ton navigateur ne prend pas en charge la balise vidéo."
+  "modal.videoNotSupported": "Ton navigateur ne prend pas en charge la balise vidéo.",
+  "options.targetRatio": "Ratio cible (%)",
+  "options.resetRatio": "Réinitialiser à 1:20:79",
+  "options.ratioHint": "Vous pouvez modifier le ratio manuellement. Les trois valeurs sont normalisées automatiquement ; une modification manuelle désactive le calcul basé sur les statistiques.",
+  "options.tgLevels": "Niveaux TG globaux",
+  "options.stats": "Statistiques bonus (%)",
+  "options.statsHint": "Saisissez tous les bonus d’Attaque et de Létalité, puis cochez la case ci-dessous pour calculer le ratio à partir de vos statistiques.",
+  "options.useStatsRatio": "Utiliser mes statistiques pour calculer le ratio",
+  "options.attack": "Attaque",
+  "options.lethality": "Létalité"
 }

@@ -22,5 +22,14 @@
   "aria.closeInfo": "关闭信息窗口",
   "aria.previousImage": "上一张图片",
   "aria.nextImage": "下一张图片",
-  "modal.videoNotSupported": "你的浏览器不支持 video 标签。"
+  "modal.videoNotSupported": "你的浏览器不支持 video 标签。",
+  "options.targetRatio": "目标比例 (%)",
+  "options.resetRatio": "重置为 1:20:79",
+  "options.ratioHint": "你可以手动修改比例。三个数值会自动归一化；手动修改会关闭基于属性的计算。",
+  "options.tgLevels": "全局 TG 等级",
+  "options.stats": "加成属性 (%)",
+  "options.statsHint": "输入全部攻击与致死率加成，然后勾选下方选项，以根据你的属性计算比例。",
+  "options.useStatsRatio": "使用我的属性计算比例",
+  "options.attack": "攻击",
+  "options.lethality": "致死率"
 }

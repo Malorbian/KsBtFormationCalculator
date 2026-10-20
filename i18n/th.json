@@ -22,5 +22,14 @@
   "aria.closeInfo": "ปิดหน้าต่างข้อมูล",
   "aria.previousImage": "รูปภาพก่อนหน้า",
   "aria.nextImage": "รูปภาพถัดไป",
-  "modal.videoNotSupported": "เบราว์เซอร์ของคุณไม่รองรับแท็กวิดีโอ"
+  "modal.videoNotSupported": "เบราว์เซอร์ของคุณไม่รองรับแท็กวิดีโอ",
+  "options.targetRatio": "อัตราส่วนเป้าหมาย (%)",
+  "options.resetRatio": "รีเซ็ตเป็น 1:20:79",
+  "options.ratioHint": "คุณสามารถแก้ไขอัตราส่วนเองได้ ค่าทั้งสามจะถูกปรับสัดส่วนอัตโนมัติ และการแก้ไขเองจะปิดการคำนวณจากค่าสเตตัส",
+  "options.tgLevels": "ระดับ TG รวม",
+  "options.stats": "ค่าสเตตัสโบนัส (%)",
+  "options.statsHint": "กรอกโบนัส Attack และ Lethality ให้ครบ แล้วเลือกช่องด้านล่างเพื่อคำนวณอัตราส่วนจากค่าสเตตัสของคุณ",
+  "options.useStatsRatio": "ใช้ค่าสเตตัสของฉันคำนวณอัตราส่วน",
+  "options.attack": "Attack",
+  "options.lethality": "Lethality"
 }

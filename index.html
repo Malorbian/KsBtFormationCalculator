@@ -135,28 +135,118 @@
 				<fieldset class="groups" aria-label="Options" data-i18n-aria-label="sections.options">
                     <div class="tier" id="options">
                         <div class="tier-header" data-i18n="sections.options">Options</div>
-                    
-                        <div class="subclass">
-                                    <label for="march-cap" data-i18n="options.marchCap">March cap</label>
-                                    <input type="number" id="march-cap" name="march-cap" step="1" inputmode="numeric" value="110000" />
-                        </div>
-                        <div class="subclass">
-                                    <label for="join-cap" data-i18n="options.joinCap">Join cap</label>
-                                    <input type="number" id="join-cap" name="join-cap" step="1" inputmode="numeric" value="60000" />
-                        </div>
-                        <div class="subclass">
-                                    <label for="max-marches" data-i18n="options.maxMarches">Max Marches</label>
-                                    <input type="number" id="max-marches" name="max-marches" step="1" inputmode="numeric" value="6" />
-                                    <label class="checkbox">
-										<input type="checkbox" id="host-own-rally" name="host-own-rally" checked />
-                                        <span data-i18n="options.hostOwnRally">Host own rally</span>
-                                    </label>
-                        </div>
-                    </div>
 
-                        
+                        <div class="options-grid">
+                            <div class="subclass">
+                                <label for="march-cap" data-i18n="options.marchCap">March cap</label>
+                                <input type="number" id="march-cap" name="march-cap" step="1" inputmode="numeric" value="110000" min="1" />
+                            </div>
+                            <div class="subclass">
+                                <label for="join-cap" data-i18n="options.joinCap">Join cap</label>
+                                <input type="number" id="join-cap" name="join-cap" step="1" inputmode="numeric" value="60000" min="1" />
+                            </div>
+                            <div class="subclass">
+                                <label for="max-marches" data-i18n="options.maxMarches">Join marches</label>
+                                <input type="number" id="max-marches" name="max-marches" step="1" inputmode="numeric" value="6" min="4" max="6" />
+                                <label class="checkbox">
+                                    <input type="checkbox" id="host-own-rally" name="host-own-rally" checked />
+                                    <span data-i18n="options.hostOwnRally">Host own rally</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="subclass tg-section">
+                            <label data-i18n="options.tgLevels">Global TG levels</label>
+                            <div class="tg-fields">
+                                <div class="subclass">
+                                    <label for="tg-infantry" data-i18n="troops.infantry">Infantry</label>
+                                    <select class="tg-level-select" id="tg-infantry" name="tg-infantry">
+                                        <option value="TG0">TG0</option><option value="TG1">TG1</option><option value="TG2">TG2</option>
+                                        <option value="TG3">TG3</option><option value="TG4">TG4</option><option value="TG5">TG5</option>
+                                    </select>
+                                </div>
+                                <div class="subclass">
+                                    <label for="tg-cavalry" data-i18n="troops.cavalry">Cavalry</label>
+                                    <select class="tg-level-select" id="tg-cavalry" name="tg-cavalry">
+                                        <option value="TG0">TG0</option><option value="TG1">TG1</option><option value="TG2">TG2</option>
+                                        <option value="TG3">TG3</option><option value="TG4">TG4</option><option value="TG5">TG5</option>
+                                    </select>
+                                </div>
+                                <div class="subclass">
+                                    <label for="tg-archer" data-i18n="troops.archer">Archer</label>
+                                    <select class="tg-level-select" id="tg-archer" name="tg-archer">
+                                        <option value="TG0">TG0</option><option value="TG1">TG1</option><option value="TG2">TG2</option>
+                                        <option value="TG3">TG3</option><option value="TG4">TG4</option><option value="TG5">TG5</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="subclass ratio-section">
+                            <label data-i18n="options.targetRatio">Target ratio (%)</label>
+                            <div class="ratio-fields">
+                                <div class="subclass">
+                                    <label for="target-ratio-infantry" data-i18n="troops.infantry">Infantry</label>
+                                    <input type="number" id="target-ratio-infantry" value="1" step="0.01" inputmode="decimal" min="0" />
+                                </div>
+                                <div class="subclass">
+                                    <label for="target-ratio-cavalry" data-i18n="troops.cavalry">Cavalry</label>
+                                    <input type="number" id="target-ratio-cavalry" value="20" step="0.01" inputmode="decimal" min="0" />
+                                </div>
+                                <div class="subclass">
+                                    <label for="target-ratio-archer" data-i18n="troops.archer">Archer</label>
+                                    <input type="number" id="target-ratio-archer" value="79" step="0.01" inputmode="decimal" min="0" />
+									<button type="button" id="reset-target-ratio" class="secondary-btn" data-i18n="options.resetRatio">Reset to 1:20:79</button> 
+								</div>
+                            </div>
+                            <div class="ratio-hint" data-i18n="options.ratioHint">You can edit the ratio manually. The three values are normalized automatically; manual edits turn stat-based calculation off.</div>
+                        </div>
+
+                        <div class="subclass stats-section">
+                            <label data-i18n="options.stats">Bonus stats (%)</label>
+                            <div class="stats-hint" data-i18n="options.statsHint">Enter all Attack and Lethality bonuses, then enable the checkbox below to calculate the ratio from your stats.</div>
+                            <div id="stats-fields" class="stats-fields">
+                                <div class="stats-class-column">
+                                    <div class="stats-class-label" data-i18n="troops.infantry">Infantry</div>
+                                    <div class="subclass">
+                                        <label for="stats-infantry-attack" data-i18n="options.attack">Attack</label>
+                                        <input type="number" id="stats-infantry-attack" name="stats-infantry-attack" step="0.1" inputmode="decimal" min="0" placeholder="—" />
+                                    </div>
+                                    <div class="subclass">
+                                        <label for="stats-infantry-lethality" data-i18n="options.lethality">Lethality</label>
+                                        <input type="number" id="stats-infantry-lethality" name="stats-infantry-lethality" step="0.1" inputmode="decimal" min="0" placeholder="—" />
+                                    </div>
+                                </div>
+                                <div class="stats-class-column">
+                                    <div class="stats-class-label" data-i18n="troops.cavalry">Cavalry</div>
+                                    <div class="subclass">
+                                        <label for="stats-cavalry-attack" data-i18n="options.attack">Attack</label>
+                                        <input type="number" id="stats-cavalry-attack" name="stats-cavalry-attack" step="0.1" inputmode="decimal" min="0" placeholder="—" />
+                                    </div>
+                                    <div class="subclass">
+                                        <label for="stats-cavalry-lethality" data-i18n="options.lethality">Lethality</label>
+                                        <input type="number" id="stats-cavalry-lethality" name="stats-cavalry-lethality" step="0.1" inputmode="decimal" min="0" placeholder="—" />
+                                    </div>
+                                </div>
+                                <div class="stats-class-column">
+                                    <div class="stats-class-label" data-i18n="troops.archer">Archer</div>
+                                    <div class="subclass">
+                                        <label for="stats-archer-attack" data-i18n="options.attack">Attack</label>
+                                        <input type="number" id="stats-archer-attack" name="stats-archer-attack" step="0.1" inputmode="decimal" min="0" placeholder="—" />
+                                    </div>
+                                    <div class="subclass">
+                                        <label for="stats-archer-lethality" data-i18n="options.lethality">Lethality</label>
+                                        <input type="number" id="stats-archer-lethality" name="stats-archer-lethality" step="0.1" inputmode="decimal" min="0" placeholder="—" />
+                                    </div>
+                                </div>
+                            </div>
+                            <label class="checkbox stats-use-checkbox" for="use-stats-ratio">
+                                <input type="checkbox" id="use-stats-ratio" name="use-stats-ratio" />
+                                <span data-i18n="options.useStatsRatio">Use my stats to calculate the ratio</span>
+                            </label>
+                        </div>
                     </div>
-				</fieldset>
+                </fieldset>
 
 
                 <h1 id="result-title"><span data-i18n="sections.formations">Formations</span> <button class="info-btn" data-type="video" aria-label="Info: short video" data-i18n-aria-label="aria.infoVideo">i</button> </h1>
@@ -416,7 +506,7 @@
 				</div>
 			</div>
 
-			<script src="dist/main.js" defer></script>
+			<script type="module" src="dist/main.js"></script>
 	</body>
 </html>
 
