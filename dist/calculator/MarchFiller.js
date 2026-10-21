@@ -7,33 +7,48 @@ function emptyAmounts() {
 export class MarchFiller {
     static fill(availableTroops, targetRatio, hostCapacity, joinerCapacity, joinerCount, hostOwn, tgLevels, armyStats) {
         const marchPlans = this.createMarchPlans(hostCapacity, joinerCapacity, joinerCount, hostOwn);
-        const totalCapacity = marchPlans.reduce((sum, march) => sum + march.capacity, 0);
+        const requestedTotalCapacity = marchPlans.reduce((sum, march) => sum + march.capacity, 0);
         const availableByClass = this.countAvailableByClass(availableTroops);
         const totalAvailable = TROOP_TYPES.reduce((sum, type) => sum + availableByClass[type], 0);
-        if (totalAvailable < totalCapacity) {
-            throw new Error("errors.notEnoughTroops");
-        }
+        // A player may own fewer troops than the combined capacity of all selected
+        // marches. In that case we still calculate formations instead of aborting.
+        // The available troops are spread proportionally over all selected marches.
         const topTwoAvailable = this.countTopTwoTiers(availableTroops);
-        const mode = topTwoAvailable >= totalCapacity ? "ratio" : "damage";
+        const mode = topTwoAvailable >= requestedTotalCapacity ? "ratio" : "damage";
+        let totalToDeploy = Math.min(totalAvailable, requestedTotalCapacity);
+        // Damage mode requires at least 10% of every used march to be present in
+        // each troop class. If one class is scarce, reduce the overall amount sent
+        // just enough to keep that rule valid rather than failing the calculation.
+        if (mode === "damage") {
+            totalToDeploy = this.limitDamageModeDeploymentByMinimums(marchPlans, totalToDeploy, availableByClass);
+        }
+        const effectiveMarchPlans = this.scaleMarchPlansToAvailableTroops(marchPlans, totalToDeploy);
+        if (totalToDeploy <= 0) {
+            return {
+                hostFormation: new Composition(),
+                joinFormation: new Composition(),
+                mode
+            };
+        }
         let selectedGroups;
         let classTargets;
         let perMarchClassTargets;
         if (mode === "ratio") {
-            classTargets = this.calculateRatioClassTargets(totalCapacity, targetRatio, availableByClass);
+            classTargets = this.calculateRatioClassTargets(totalToDeploy, targetRatio, availableByClass);
             selectedGroups = this.selectByRatio(availableTroops, classTargets, tgLevels, armyStats);
-            perMarchClassTargets = this.distributeClassTotals(classTargets, marchPlans.map((march) => march.capacity));
+            perMarchClassTargets = this.distributeClassTotals(classTargets, effectiveMarchPlans.map((march) => march.capacity));
         }
         else {
-            const minimums = marchPlans.map((march) => this.minimumForMarch(march.capacity));
-            const damageSelection = this.selectByDamage(availableTroops, totalCapacity, minimums, tgLevels, armyStats);
+            const minimums = effectiveMarchPlans.map((march) => this.minimumForMarch(march.capacity));
+            const damageSelection = this.selectByDamage(availableTroops, totalToDeploy, minimums, tgLevels, armyStats);
             selectedGroups = damageSelection.groups;
             classTargets = damageSelection.classTargets;
-            perMarchClassTargets = this.distributeClassTotals(classTargets, marchPlans.map((march) => march.capacity), minimums);
+            perMarchClassTargets = this.distributeClassTotals(classTargets, effectiveMarchPlans.map((march) => march.capacity), minimums);
         }
         const formations = this.distributeGroupsToMarches(selectedGroups, perMarchClassTargets);
-        this.validateMarches(formations, marchPlans, mode);
-        const hostIndex = marchPlans.findIndex((march) => march.kind === "host");
-        const joinIndex = marchPlans.findIndex((march) => march.kind === "join");
+        this.validateMarches(formations, effectiveMarchPlans, mode);
+        const hostIndex = effectiveMarchPlans.findIndex((march) => march.kind === "host");
+        const joinIndex = effectiveMarchPlans.findIndex((march) => march.kind === "join");
         return {
             hostFormation: hostIndex >= 0 ? formations[hostIndex] : new Composition(),
             joinFormation: joinIndex >= 0 ? formations[joinIndex] : new Composition(),
@@ -61,6 +76,81 @@ export class MarchFiller {
             throw new Error("errors.marchCountGreaterThanZero");
         }
         return plans;
+    }
+    /**
+     * If there are fewer troops than total march capacity, scale every selected
+     * march by the same fill percentage. The returned capacities are integers,
+     * never exceed the requested capacities, and sum exactly to totalToDeploy.
+     *
+     * Example: 120k host + five 90k joins = 570k capacity. With only 285k
+     * troops available, the effective formations become 60k host + five 45k joins.
+     */
+    static scaleMarchPlansToAvailableTroops(plans, totalToDeploy) {
+        const requestedTotal = plans.reduce((sum, plan) => sum + plan.capacity, 0);
+        const safeTotal = Math.max(0, Math.min(Math.floor(totalToDeploy), requestedTotal));
+        if (safeTotal >= requestedTotal) {
+            return plans.map((plan) => ({ ...plan }));
+        }
+        if (safeTotal === 0 || requestedTotal === 0) {
+            return plans.map((plan) => ({ ...plan, capacity: 0 }));
+        }
+        const exact = plans.map((plan) => safeTotal * plan.capacity / requestedTotal);
+        const capacities = exact.map((value, index) => Math.min(plans[index].capacity, Math.floor(value)));
+        let missing = safeTotal - capacities.reduce((sum, value) => sum + value, 0);
+        // Largest-remainder rounding keeps the distribution as proportional as
+        // possible while making the sum exactly match the number of troops used.
+        const order = exact
+            .map((value, index) => ({
+            index,
+            fraction: value - Math.floor(value)
+        }))
+            .sort((a, b) => b.fraction - a.fraction);
+        while (missing > 0) {
+            let added = false;
+            for (const entry of order) {
+                if (missing <= 0)
+                    break;
+                if (capacities[entry.index] >= plans[entry.index].capacity)
+                    continue;
+                capacities[entry.index] += 1;
+                missing -= 1;
+                added = true;
+            }
+            if (!added)
+                break;
+        }
+        return plans.map((plan, index) => ({
+            ...plan,
+            capacity: capacities[index]
+        }));
+    }
+    /**
+     * Returns the largest deployable troop count (up to requestedAmount) for which
+     * the damage-mode 10% minimum can still be satisfied for infantry, cavalry
+     * and archers in every non-empty march.
+     */
+    static limitDamageModeDeploymentByMinimums(plans, requestedAmount, available) {
+        if (requestedAmount <= 0)
+            return 0;
+        // Globally, a 10% minimum means no class can support a formation larger
+        // than roughly 10x its available troop count. This gives us a close upper
+        // bound before accounting for per-march integer rounding.
+        const smallestClass = Math.min(available.infantry, available.cavalry, available.archer);
+        let candidate = Math.min(Math.floor(requestedAmount), Math.floor(smallestClass / MIN_CLASS_SHARE_DAMAGE_MODE));
+        while (candidate > 0) {
+            const scaledPlans = this.scaleMarchPlansToAvailableTroops(plans, candidate);
+            const minimums = scaledPlans.map((plan) => this.minimumForMarch(plan.capacity));
+            const required = minimums.reduce((sum, min) => ({
+                infantry: sum.infantry + min.infantry,
+                cavalry: sum.cavalry + min.cavalry,
+                archer: sum.archer + min.archer
+            }), emptyAmounts());
+            if (TROOP_TYPES.every((type) => available[type] >= required[type])) {
+                return candidate;
+            }
+            candidate -= 1;
+        }
+        return 0;
     }
     static countAvailableByClass(troops) {
         return {
@@ -256,10 +346,16 @@ export class MarchFiller {
         return Number.parseInt(tier.slice(1), 10);
     }
     static minimumForMarch(capacity) {
-        const min = Math.ceil(capacity * MIN_CLASS_SHARE_DAMAGE_MODE);
-        if (min * TROOP_TYPES.length > capacity) {
-            throw new Error("errors.invalidMarchCapacity");
+        if (capacity <= 0) {
+            return emptyAmounts();
         }
+        // With only one or two troops it is mathematically impossible to place
+        // at least one troop of all three classes. Do not fail the whole
+        // calculation for this extreme low-troop edge case.
+        if (capacity < TROOP_TYPES.length) {
+            return emptyAmounts();
+        }
+        const min = Math.ceil(capacity * MIN_CLASS_SHARE_DAMAGE_MODE);
         return { infantry: min, cavalry: min, archer: min };
     }
     /**
@@ -427,9 +523,9 @@ export class MarchFiller {
                 throw new Error("errors.calculation");
             }
             if (mode === "damage") {
-                const required = Math.ceil(plans[index].capacity * MIN_CLASS_SHARE_DAMAGE_MODE);
+                const required = this.minimumForMarch(plans[index].capacity);
                 for (const type of TROOP_TYPES) {
-                    if (formation.getClassTotal(type) < required) {
+                    if (formation.getClassTotal(type) < required[type]) {
                         throw new Error("errors.calculation");
                     }
                 }
