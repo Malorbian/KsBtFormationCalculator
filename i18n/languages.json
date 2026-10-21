@@ -18,9 +18,9 @@
     "dir": "ltr"
   },
   {
-    "code": "zh",
-    "name": "Mandarin Chinese",
-    "nativeName": "中文（普通话）",
+    "code": "fr",
+    "name": "French",
+    "nativeName": "Français",
     "dir": "ltr"
   },
   {
@@ -30,9 +30,15 @@
     "dir": "ltr"
   },
   {
-    "code": "tr",
-    "name": "Turkish",
-    "nativeName": "Türkçe",
+    "code": "id",
+    "name": "Indonesian",
+    "nativeName": "Bahasa Indonesia",
+    "dir": "ltr"
+  },
+  {
+    "code": "ja",
+    "name": "Japanese",
+    "nativeName": "日本語",
     "dir": "ltr"
   },
   {
@@ -42,21 +48,21 @@
     "dir": "ltr"
   },
   {
-    "code": "fr",
-    "name": "French",
-    "nativeName": "Français",
-    "dir": "ltr"
-  },
-  {
     "code": "th",
     "name": "Thai",
     "nativeName": "ไทย",
     "dir": "ltr"
   },
   {
-    "code": "id",
-    "name": "Indonesian",
-    "nativeName": "Bahasa Indonesia",
+    "code": "tr",
+    "name": "Turkish",
+    "nativeName": "Türkçe",
+    "dir": "ltr"
+  },
+  {
+    "code": "zh",
+    "name": "Mandarin Chinese",
+    "nativeName": "中文（普通话）",
     "dir": "ltr"
   },
   {

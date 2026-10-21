@@ -38,6 +38,7 @@ The following extra translation files are included:
 - `fr.json` — French / Français
 - `th.json` — Thai / ไทย
 - `id.json` — Indonesian / Bahasa Indonesia
+- `ja.json` — Japanese / 日本語
 
 Indonesian is the language name in English; in the language itself it is called Bahasa Indonesia.
 
